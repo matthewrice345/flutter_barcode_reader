@@ -9,8 +9,7 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.PluginRegistry
 import io.flutter.plugin.common.PluginRegistry.Registrar
 
-class BarcodeScanPlugin(val activity: Activity): MethodCallHandler,
-    PluginRegistry.ActivityResultListener {
+class BarcodeScanPlugin(val activity: Activity): MethodCallHandler, PluginRegistry.ActivityResultListener {
   var result : Result? = null
   companion object {
     @JvmStatic

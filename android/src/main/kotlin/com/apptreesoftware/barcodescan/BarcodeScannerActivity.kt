@@ -12,15 +12,13 @@ import android.view.MenuItem
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
-
 class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
 
-    lateinit var scannerView: me.dm7.barcodescanner.zxing.ZXingScannerView
+    private lateinit var scannerView: me.dm7.barcodescanner.zxing.ZXingScannerView
 
     companion object {
-        val REQUEST_TAKE_PHOTO_CAMERA_PERMISSION = 100
-        val TOGGLE_FLASH = 200
-
+        const val REQUEST_TAKE_PHOTO_CAMERA_PERMISSION = 100
+        const val TOGGLE_FLASH = 200
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +74,7 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         finish()
     }
 
-    fun finishWithError(errorCode: String) {
+    private fun finishWithError(errorCode: String) {
         val intent = Intent()
         intent.putExtra("ERROR_CODE", errorCode)
         setResult(Activity.RESULT_CANCELED, intent)
@@ -121,7 +119,7 @@ object PermissionUtil {
      */
     fun verifyPermissions(grantResults: IntArray): Boolean {
         // At least one result must be checked.
-        if (grantResults.size < 1) {
+        if (grantResults.isEmpty()) {
             return false
         }
 
